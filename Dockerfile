@@ -1,5 +1,9 @@
 FROM ghcr.io/rustlang/rust:nightly
 
+LABEL org.opencontainers.image.source="https://github.com/TEK-Engineering/tsp-toolkit-build"
+LABEL org.opencontainers.image.description="The docker container definition used to build Keithley TSP Toolkit"
+LABEL org.opencontainers.image.licenses="MIT"
+
 ENV NODE_VERSION 16.15.0
 
 # Shamelessly stolen from
