@@ -1,4 +1,4 @@
-FROM ghcr.io/rustlang/rust:nightly
+FROM rustlang/rust:nightly
 
 LABEL org.opencontainers.image.source="https://github.com/TEK-Engineering/tsp-toolkit-build"
 LABEL org.opencontainers.image.description="The docker container definition used to build Keithley TSP Toolkit"
