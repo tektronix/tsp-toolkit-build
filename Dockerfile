@@ -1,4 +1,4 @@
-FROM git.keithley.com:5050/docker-base-images/base-rust-nightly:latest
+FROM ghcr.io/rustlang/rust:nightly
 
 ENV NODE_VERSION 16.15.0
 
