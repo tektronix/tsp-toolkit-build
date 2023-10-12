@@ -9,8 +9,8 @@ on:
             - 'main'
 
 env:
-    test-container-tag: "${{github.repository}}:${{github.sha}}"
-    release-container-tag: "${{github.repository}}:latest"
+    test-container-tag: "${GITHUB_REPOSITORY,,}:${{github.sha}}"
+    release-container-tag: "${GITHUB_REPOSITORY,,}:latest"
 
 
 jobs:
