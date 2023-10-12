@@ -9,8 +9,8 @@ on:
             - 'main'
 
 env:
-    TEST_CONTAINER_TAG: "${{github.repository}}:${{github.sha}}"
-    RELEASE_CONTAINER_TAG: "${{github.repository}}:latest"
+    TEST_CONTAINER_TAG: "ghcr.io/${{github.repository}}:${{github.sha}}"
+    RELEASE_CONTAINER_TAG: "ghcr.io/${{github.repository}}:latest"
 
 
 jobs:
