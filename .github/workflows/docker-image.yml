@@ -18,6 +18,8 @@ jobs:
         name: Build Test Container
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout
+              uses: actions/checkout@v4
             - name: Build Test Container
               # in bash, `${ENVIRONMENT_VARIABLE,,}` lowercases whatever is stored in `ENVIRONMENT_VARIABLE`
               run: >-
