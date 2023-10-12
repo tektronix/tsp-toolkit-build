@@ -24,7 +24,7 @@ jobs:
                 --pull
                 --build-arg CORES="$(nproc)"
                 --tag "${{env.test-container-tag}}"
-                ./Dockerfile
+                .
             - name: Push Test Container
               run: >-
                 docker push ${{env.test-container-tag}}
