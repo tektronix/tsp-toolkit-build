@@ -51,9 +51,10 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     # smoke tests
     && node --version \
     && npm --version \
-        && apt-get install -yqq \
-            pkg-config \
-            libssl-dev \
-            mingw-w64 \
-            ninja-build \
-        && rustup target add x86_64-pc-windows-gnu
+    && apt-get update \
+    && apt-get install -yqq \
+        pkg-config \
+        libssl-dev \
+        mingw-w64 \
+        ninja-build \
+    && rustup target add x86_64-pc-windows-gnu
