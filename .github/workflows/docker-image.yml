@@ -1,0 +1,35 @@
+name: Docker Image CI
+
+on:
+    push:
+        branches:
+            - 'main'
+    pull_request:
+        branches:
+            - 'main'
+
+env:
+    test-container-tag: "${{github.repository}}:${{github.sha}}"
+    release-container-tag: "${{github.repository}}:latest"
+
+
+jobs:
+    build_test:
+        name: Build Test Container
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build Test Container
+              run: >-
+                docker build
+                --pull
+                --build-arg CORES="$(nproc)"
+                --tag "${{env.test-container-tag}}"
+            - name: Push Test Container
+              run: >-
+                docker push ${{env.test-container-tag}}
+            - name: Push Latest Tag
+              if: ${{github.ref_name == 'main'}}
+              run: |
+                docker pull ${{env.test-container-tag}}
+                docker tag ${{env.test-container-tag}} ${{env.release-container-tag}}
+                docker push ${{env.release-container-tag}}
