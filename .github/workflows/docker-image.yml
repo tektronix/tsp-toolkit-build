@@ -9,8 +9,8 @@ on:
             - 'main'
 
 env:
-    test-container-tag: "${GITHUB_REPOSITORY,,}:${{github.sha}}"
-    release-container-tag: "${GITHUB_REPOSITORY,,}:latest"
+    TEST_CONTAINER_TAG: "${{github.repository}}:${{github.sha}}"
+    RELEASE_CONTAINER_TAG: "${{github.repository}}:latest"
 
 
 jobs:
@@ -19,18 +19,19 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Build Test Container
+              # in bash, `${ENVIRONMENT_VARIABLE,,}` lowercases whatever is stored in `ENVIRONMENT_VARIABLE`
               run: >-
                 docker build
                 --pull
                 --build-arg CORES="$(nproc)"
-                --tag "${{env.test-container-tag}}"
+                --tag "${TEST_CONTAINER_TAG,,}"
                 .
             - name: Push Test Container
               run: >-
-                docker push ${{env.test-container-tag}}
+                docker push "${TEST_CONTAINER_TAG,,}"
             - name: Push Latest Tag
               if: ${{github.ref_name == 'main'}}
               run: |
-                docker pull ${{env.test-container-tag}}
-                docker tag ${{env.test-container-tag}} ${{env.release-container-tag}}
-                docker push ${{env.release-container-tag}}
+                docker pull "${TEST_CONTAINER_TAG,,}"
+                docker tag "${TEST_CONTAINER_TAG,,}" "${RELEASE_CONTAINER_TAG,,}"
+                docker push "${RELEASE_CONTAINER_TAG,,}"
