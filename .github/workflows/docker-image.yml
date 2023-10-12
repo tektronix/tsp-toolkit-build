@@ -25,7 +25,7 @@ jobs:
                 --pull
                 --build-arg CORES="$(nproc)"
                 --tag "${TEST_CONTAINER_TAG,,}"
-                .
+                ${{github.workspace}}
             - name: Push Test Container
               run: >-
                 docker push "${TEST_CONTAINER_TAG,,}"
