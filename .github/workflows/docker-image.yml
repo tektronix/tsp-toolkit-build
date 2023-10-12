@@ -18,6 +18,10 @@ jobs:
         name: Build Test Container
         runs-on: ubuntu-latest
         steps:
+            - name: Login to Registry
+              run: >-
+                echo "${{ secrets.GITHUB_TOKEN }}"
+                | docker login ghcr.io -u $ --password-stdin
             - name: Checkout
               uses: actions/checkout@v4
             - name: Build Test Container
