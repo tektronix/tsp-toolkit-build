@@ -57,4 +57,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         libssl-dev \
         mingw-w64 \
         ninja-build \
-    && rustup target add x86_64-pc-windows-gnu
+    && rustup target add x86_64-pc-windows-gnu \
+    && cargo install \
+        cargo2junit \
+        grcov
