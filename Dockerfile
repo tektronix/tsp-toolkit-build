@@ -58,6 +58,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         mingw-w64 \
         ninja-build \
     && rustup target add x86_64-pc-windows-gnu \
+    && rustup component add llvm-tools-preview \
     && cargo install \
         cargo2junit \
-        grcov
+        grcov \
+        cargo-cyclonedx
