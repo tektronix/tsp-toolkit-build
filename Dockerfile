@@ -4,14 +4,12 @@ LABEL org.opencontainers.image.source="https://github.com/TEK-Engineering/tsp-to
 LABEL org.opencontainers.image.description="The docker container definition used to build Keithley TSP Toolkit"
 LABEL org.opencontainers.image.licenses="MIT"
 
-ENV NODE_VERSION 16.15.0
+ENV NODE_VERSION 20.11.0
 
 # Shamelessly stolen from
 #   https://github.com/nodejs/docker-node/blob/4e0fff70002f51c2b121c9b231917abcb63d2b1a/16/buster/Dockerfile
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
-
-ENV NODE_VERSION 18.18.1
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && case "${dpkgArch##*-}" in \
