@@ -57,7 +57,11 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         ninja-build \
         clamav \
     && rustup target add x86_64-pc-windows-gnu \
-    && rustup component add llvm-tools-preview \
+    && rustup component add \
+        llvm-tools-preview \
+        rustfmt \
+        clippy \
+        cargo \
     && cargo install \
         cargo2junit \
         grcov \
