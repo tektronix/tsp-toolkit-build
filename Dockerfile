@@ -57,6 +57,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         ninja-build \
         clamav \
         jq \
+        python3 \
+        python3-pip \
     && rustup target add x86_64-pc-windows-gnu \
     && rustup component add \
         llvm-tools-preview \
