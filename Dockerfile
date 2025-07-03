@@ -59,6 +59,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         jq \
         python3 \
         python3-pip \
+        libdbus-1-dev \
     && rustup target add x86_64-pc-windows-gnu \
     && rustup component add \
         llvm-tools-preview \
@@ -68,4 +69,5 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && cargo install \
         cargo2junit \
         grcov \
-        cargo-cyclonedx
+        cargo-cyclonedx \
+        cargo-nextest
