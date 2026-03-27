@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/tektronix/tsp-toolkit-
 LABEL org.opencontainers.image.description="The docker container definition used to build Keithley TSP Toolkit"
 LABEL org.opencontainers.image.licenses="MIT"
 
-ENV NODE_VERSION 24.14.1
+ENV NODE_VERSION="24.14.1"
 
 # Shamelessly stolen from
 #   https://github.com/nodejs/docker-node/blob/4e0fff70002f51c2b121c9b231917abcb63d2b1a/16/buster/Dockerfile
