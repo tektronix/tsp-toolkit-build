@@ -63,7 +63,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         rustfmt \
         clippy \
         cargo \
-    && cargo install \
+    && cargo install --locked \
         cargo2junit \
         grcov \
         cargo-cyclonedx \
