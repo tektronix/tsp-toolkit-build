@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/tektronix/tsp-toolkit-
 LABEL org.opencontainers.image.description="The docker container definition used to build Keithley TSP Toolkit"
 LABEL org.opencontainers.image.licenses="MIT"
 
-ENV NODE_VERSION 20.11.0
+ENV NODE_VERSION="24.14.1"
 
 # Shamelessly stolen from
 #   https://github.com/nodejs/docker-node/blob/4e0fff70002f51c2b121c9b231917abcb63d2b1a/16/buster/Dockerfile
@@ -21,16 +21,13 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         i386) ARCH='x86';; \
         *) echo "unsupported architecture"; exit 1 ;; \
     esac \
-    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    # gpg keys in for-loop below listed at https://github.com/nodejs/node#release-keys
     && set -ex \
     && for key in \
-        4ED778F539E3634C779C87C6D7062848A1AB005C \
-        141F07595B7B3FFE74309A937405533BE57C7D57 \
-        74F12602B6F1C4E913FAA37AD3A89613643B6201 \
+        5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
         DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
-        61FC681DFB92A079F1685E77973F295594EC4689 \
+        CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
         8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \
-        C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
         890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
         C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
         108F52B48DB57BB0CC439B2997B01419BD92F80A \
@@ -66,8 +63,9 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
         rustfmt \
         clippy \
         cargo \
-    && cargo install \
+    && cargo install --locked \
         cargo2junit \
         grcov \
         cargo-cyclonedx \
+        cargo-llvm-cov \
         cargo-nextest
